@@ -1,0 +1,36 @@
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+
+Page {
+    objectName: "DatePage"
+    allowedOrientations: Orientation.All
+
+    PageHeader {
+        objectName: "pageHeader"
+
+
+        Column{
+            y: 120
+            anchors.horizontalCenter: parent.horizontalCenter
+            width: parent.width
+            height: parent.height
+
+
+            ComboBox{
+                id: cb
+                //height: 500
+                menu:  ContextMenu{
+                    MenuItem{text: "первый"}
+                    MenuItem{text: "второй"}
+                    MenuItem{text: "третий"}
+                }
+                
+                onCurrentIndexChanged: console.log(men)
+            }
+
+
+
+
+        }
+    }
+}

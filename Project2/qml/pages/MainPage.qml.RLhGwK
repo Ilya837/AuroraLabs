@@ -1,0 +1,261 @@
+/*******************************************************************************
+**
+** Copyright (C) 2022 ru.auroraos
+**
+** This file is part of the Моё приложение для ОС Аврора project.
+**
+** Redistribution and use in source and binary forms,
+** with or without modification, are permitted provided
+** that the following conditions are met:
+**
+** * Redistributions of source code must retain the above copyright notice,
+**   this list of conditions and the following disclaimer.
+** * Redistributions in binary form must reproduce the above copyright notice,
+**   this list of conditions and the following disclaimer
+**   in the documentation and/or other materials provided with the distribution.
+** * Neither the name of the copyright holder nor the names of its contributors
+**   may be used to endorse or promote products derived from this software
+**   without specific prior written permission.
+**
+** THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+** AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+** THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+** FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+** IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+** FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+** OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+** PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+** LOSS OF USE, DATA, OR PROFITS;
+** OR BUSINESS INTERRUPTION)
+** HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+** WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+** (INCLUDING NEGLIGENCE OR OTHERWISE)
+** ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+** EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+**
+*******************************************************************************/
+
+import QtQuick 2.0
+import Sailfish.Silica 1.0
+import  QtQuick.Layouts 1.1
+
+
+
+    Page {
+        objectName: "mainPage"
+        allowedOrientations: Orientation.All
+
+
+
+        PageHeader {
+            objectName: "pageHeader"
+            title: qsTr("Laba2")
+
+        }
+
+       Column{
+           x:0
+           y:0
+           width: parent.width
+           height: parent.height
+
+
+            Item{
+                width: parent.width
+                height: parent.width /2.5 * 1.5
+
+                Rectangle{
+                    id: rRec
+                    width: Math.min(page.width/ 2.5,page.height/ 1.5)
+                    height: Math.min(page.width/ 2.5,page.height/ 1.5)
+                    color: "red"
+                    x: 0
+                    y: 0
+
+                }
+
+                Rectangle{
+                    id: gRec
+                    width: Math.min(page.width/ 2.5,page.height/ 1.5)
+                    height: Math.min(page.width/ 2.5,page.height/ 1.5)
+                    color: "green"
+                    x: rRec.x + rRec.width
+                    y: rRec.y + rRec.height / 2
+
+                }
+
+                Rectangle{
+                    id: bRec
+                    width: Math.min(page.width/ 2.5,page.height/ 1.5)
+                    height: Math.min(page.width/ 2.5,page.height/ 1.5)
+                    color: "blue"
+                    x: rRec.x + rRec.width + gRec.width / 2
+                    y: rRec.y
+                    Text {
+                        id: name
+                        color: "white"
+                        text: qsTr("Квадрат")
+                        anchors.verticalCenter: parent.verticalCenter
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                }
+
+            }
+
+//            Column{
+//            spacing: 5
+//            width: page.width
+//            height: (page.width-2*spacing)/3 * 2 + spacing
+
+//            Row{
+//                spacing: parent.spacing
+//                width: page.width
+//                height: (width - 2 * spacing) /3
+
+//                Rectangle{
+//                    width: parent.height
+//                    height: parent.height
+//                    color: "red"
+
+//                }
+
+//                Rectangle{
+//                    width: parent.height
+//                    height: parent.height
+//                    color: "green"
+
+//                }
+
+//                Rectangle{
+//                    width: parent.height
+//                    height: parent.height
+//                    color: "blue"
+
+//                }
+
+//            }
+
+//            Row{
+//                width: page.width
+//                height: (width - spacing)/2
+//                spacing: (width - 2 * parent.spacing)/3 + 2 * parent.spacing
+//                Rectangle{
+//                    width: parent.height
+//                    height: parent.height
+//                    color: "pink"
+
+//                }
+
+//                Rectangle{
+//                    width: parent.height
+//                    height: parent.height
+//                    color: "black"
+
+//                }
+
+//            }
+
+
+//        }
+
+
+            SilicaGridView{
+                width: page.width
+                height: 1000
+                cellWidth: width / 3
+
+                model : ListModel{
+                    ListElement{col: "red"}
+                    ListElement{col: "green"}
+                    ListElement{col: "red"}
+                    ListElement{col: "red"}
+                    ListElement{col: "red"}
+                }
+
+                delegate: Rectangle{
+                    width: 150
+                    height: 150
+                    color: col
+
+                }
+            }
+
+//                //anchors.right: parent.right
+//    //            width: page.width
+//               //height: (width- spacing * (columns-1))/ columns * rows + spacing
+//                Layout.fillWidth: true;
+//                Layout.fillHeight: true;
+//                Rectangle{
+//                    width: 150
+//                    height: 150
+//                    color: "red"
+
+//                }
+
+//                Rectangle{
+//                    width: 150
+//                    height: 150
+//                    color: "green"
+
+//                }
+
+//                Rectangle{
+//                    width: 150
+//                    height: 150
+//                    color: "blue"
+
+//                }
+
+//                Rectangle{
+//                    width: 150
+//                    height: 150
+//                    color: "pink"
+
+//                }
+
+//                Rectangle{
+//                    width: 150
+//                    height: 150
+//                    color: "transparent"
+
+//                }
+
+
+//                Rectangle{
+//                    width: 150
+//                    height: 150
+//                    color: "black"
+
+//                }
+//            }
+
+
+
+
+            GridLayout{
+
+        }
+
+       }
+
+
+        Row{
+            y: 1100
+            spacing: 20
+
+            Button{
+                text: "Animation Page"
+                onClicked: pageStack.push("SecondPage.qml")
+            }
+
+            Button{
+                text: "Sum Dialog"
+                onClicked: pageStack.push("SumDialog.qml")
+            }
+
+        }
+
+    }
+
+
+
